@@ -11,7 +11,7 @@ tags: [机器学习, Python]
 建议直接安装Anaconda，其优势在于内部集成Python环境，而且可以方便的对Python的各种包进行安装和管理。对于Python的版本选择，建议选择3.5，可以到[Anaconda archive](https://repo.continuum.io/archive/index.html)下载合适的版本。Python 3.5 对应的Anaconda最新版本为4.2.0。强烈推荐从清华大学开源软件镜像站进行[下载](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/)，下载速度快且稳定。
 建议同时修改包管理镜像为国内源
 
-```
+``` bash
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 conda config --set show_channel_urls yes
 ```
@@ -20,7 +20,7 @@ conda config --set show_channel_urls yes
 
 为了防止包安装过程中反复出现警告，先对pip进行升级
 
-```
+``` bash
 python -m pip install -U pip
 ```
 
@@ -33,7 +33,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 
 3、**安装tensorflow**
 
-```
+``` bash
 pip install --upgrade --ignore-installed tensorflow-gpu
 ```
 
@@ -43,7 +43,7 @@ pip install --upgrade --ignore-installed tensorflow-gpu
 
 5、**测试tensorflow**
 
-```
+``` bash
 $ python
 >>> hello = tf.constant('Hello, TensorFlow!')
 >>> sess = tf.Session()
@@ -54,13 +54,13 @@ $ python
 
 6、**安装keras**
 
-```
+``` bash
 pip install keras
 ```
 
 在 import keras 过程中可能出现 AttributeError: module 'pandas' has no attribute 'computation'， 此时需要更新dask
 
-```
+``` bash
 pip install dask --upgrade
 ```
 
