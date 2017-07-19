@@ -14,20 +14,20 @@ tags: [机器学习, Python]
 在本项目中，我们需要分析符合哪些特征的乘客更容易在Titanic灾难中存活下来，换句话说，我们需要利用机器学习的方法来对Titanic中乘客的存活与否进行预测。乘客的主要特征如下：
 
 | 特征        | 描述     |
-| ----        | :----:   |
-| PassengerId | 乘客编号 |
-| Name        | 姓名     |
-| Sex         | 性别     |
-| Age         | 年龄     |
-| SibSp       | 兄弟姐妹及配偶总人数 |
-| Parch       | 父母及子女总人数     |
-| Pclass      | 船票种类（1-高级，2-中级，3-低级） |
-| Ticket      | 船票编号 |
-| Fare        | 票价     |
-| Cabin       | 客舱     |
-| Embarked    | 出发港   |
+| ----        | ----     |
+| PassengerId | &emsp;乘客编号 |
+| Name        | &emsp;姓名     |
+| Sex         | &emsp;性别     |
+| Age         | &emsp;年龄     |
+| SibSp       | &emsp;兄弟姐妹及配偶总人数 |
+| Parch       | &emsp;父母及子女总人数     |
+| Pclass      | &emsp;船票种类 |
+| Ticket      | &emsp;船票编号 |
+| Fare        | &emsp;票价     |
+| Cabin       | &emsp;客舱     |
+| Embarked    | &emsp;出发港   |
 
-在这篇文章中，我们的主要任务是对给定的数据进行分析，选择出能够很好的反映出乘客存活与否的特征，为下一步的预测做准备，这一过程也常被称为**特征工程**。
+在这篇文章中，我们的主要任务是对给定的数据进行分析，为下一步的特征选择做准备。
 
 首先，导入常用的数据处理包
 
@@ -36,12 +36,6 @@ tags: [机器学习, Python]
 # data analysis and wrangling
 import pandas as pd
 import numpy as np
-import random as rnd
-
-# visualization
-import seaborn as sns
-import matplotlib.pyplot as plt
-%matplotlib inline
 ```
 
 然后，使用pandas中的read_csv()方法读入训练数据和测试数据,顺便可以查看一下数据的表现形式
@@ -74,7 +68,6 @@ print(train_df.head())
 ```python
 # type of features
 print(train_df.info())
-print('-'*40)
 print(test_df.info())
 ```
 
@@ -97,6 +90,55 @@ print(test_df.info())
     memory usage: 83.6+ KB                                                                        
 
 
-```python
+明确了数据集中各个特征变量的类型之后，我们可以查看各个特征变量的数据分布情况。比如对于数值型变量：
 
+
+```python
+print(train_df.describe())
 ```
+
+           PassengerId    Survived      Pclass         Age       SibSp       Parch        Fare
+    count    891.000000  891.000000  891.000000  714.000000  891.000000  891.000000  891.000000
+    mean     446.000000    0.383838    2.308642   29.699118    0.523008    0.381594   32.204208
+    std      257.353842    0.486592    0.836071   14.526497    1.102743    0.806057   49.693429
+    min        1.000000    0.000000    1.000000    0.420000    0.000000    0.000000    0.000000
+    25%      223.500000    0.000000    2.000000   20.125000    0.000000    0.000000    7.910400
+    50%      446.000000    0.000000    3.000000   28.000000    0.000000    0.000000   14.454200
+    75%      668.500000    1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
+    max      891.000000    1.000000    3.000000   80.000000    8.000000    6.000000  512.329200
+     
+
+进一步的，我们可以对感兴趣的特征变量进行重点分析，进而得出一些初步的结论，比如：
+1、每个乘客的编号都是唯一的；
+2、在本次灾难中存活下来的乘客约占总数的38%（通过 train_df['Survived'].describe(percentiles=[.61, .62]) 查看）；  
+3、超过75%的乘客没有同父母或子女共同出行（通过 train_df['Parch'].describe(percentiles=[.75, .8]) 查看）；  
+4、将近30%的乘客是和兄弟姐妹或配偶共同出行（通过 train_df['SibSp'].describe(percentiles=[.68, .69]) 查看）；  
+5、票价的变化非常大，大约只有不到1%的人票价高达$512（通过 train_df['Fare'].describe(percentiles=[.99]) 查看）；  
+6、只有不到1%的乘客的年龄在65-80之间（通过 train_df['Age'].describe(percentiles=[0.99]) 查看）；  
+
+对于类别型变量：
+
+
+```python
+print(train_df.describe(include=['O']))
+```
+
+                        Name   Sex    Ticket    Cabin Embarked
+    count                 891   891       891      204      889
+    unique                891     2       681      147        3
+    top      Pernot, Mr. Rene  male  CA. 2343  B96 B98        S
+    freq                    1   577         7        4      644
+    
+
+可以看出：  
+1、船上没有姓名相同的乘客；  
+2、男性大概占总人数的65%（577/891）；  
+3、船票有将近22%的重复率（1-681/891）；  
+4、船舱有重复的，表明存在多人共用一个船舱的情况；  
+5、在S出发港上船的乘客最多。  
+
+---
+
+### 结束语
+
+到此为止，对于项目中给出的数据集，我们已经进行了初步的分析，包括每个特征变量的数据类型以及数据分布。在下一篇文章Titanic之特征选择中，我们将根据本文的分析，选择出对我们的最终的预测尽可能有帮助的特征。
