@@ -69,7 +69,7 @@ sub:
 # baidu_analytics:
 
 #visit_count(Powered by busuanzi on http://busuanzi.ibruce.info/)
-visit_count: false
+visit_count: true
 
 # ===========================================
 # Theme Settings
