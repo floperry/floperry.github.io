@@ -4,12 +4,12 @@ title: Titanic之数据分析
 tags: [机器学习, Python]
 ---
 
-本文来源于数据挖掘竞赛Kaggle上的经典入门项目[Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic)。个人感觉对机器学习非常有帮助，谨以此文献给自己以及众多的Machine Learners。
+本文来源于数据挖掘竞赛Kaggle上的经典入门项目[Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic)。个人感觉对机器学习非常有帮助，谨以此文献给自己以及众多的Machine learning Beginners。
 <!-- more -->
 
 ---
 
-### 项目描述：
+### 项目描述
 
 在本项目中，我们需要分析符合哪些特征的乘客更容易在Titanic灾难中存活下来，换句话说，我们需要利用机器学习的方法来对Titanic中乘客的存活与否进行预测。乘客的主要特征如下：
 
@@ -27,7 +27,15 @@ tags: [机器学习, Python]
 | Cabin       | &emsp;客舱     |
 | Embarked    | &emsp;出发港   |
 
+在问题的描述中，有以下三点需要我们重点关注一下：
+
+1、在2224名乘客中，有1502人在这次灾难中丧生，换句话说，只有32%的人存活下来。  
+2、乘客丧生的原因之一是由于没有足够的救生艇。  
+3、排除运气好的因素，妇女、儿童以及上流社会的人在这次灾难中生存下来的几率更大。
+
 在这篇文章中，我们的主要任务是对给定的数据进行分析，为下一步的特征选择做准备。
+
+### 数据类型
 
 首先，导入常用的数据处理包
 
@@ -38,7 +46,7 @@ import pandas as pd
 import numpy as np
 ```
 
-然后，使用pandas中的read_csv()方法读入训练数据和测试数据,顺便可以查看一下数据的表现形式
+然后，使用pandas中的read_csv()方法读入训练数据和测试数据,顺便可以查看一下数据的表现形式。可以看到，在我们的训练集中，变量数据类型可以分为三大类，即分类数据、数值数据以及混合数据。其中，分类数据又包括类别型（Survived、Sex和Embarked）与序数型（Pclass），数值数据包括连续型（Age、Fare）与离散型（SibSp、Parch），混合数据是指同时含有数字和字母的变量，如此处的Ticket和Cabin。
 
 
 ```python
@@ -62,7 +70,7 @@ print(train_df.head())
     3  0      113803            53.1000  C123   S       
     4  0      373450            8.0500   NaN    S      
 
-更直观的，我们可以查看数据中每个特征的详细信息
+更直观的，我们可以查看数据中每个特征的详细信息。很明显，训练集包含891个样本，对于每个样本中的特征变量，float类型的有2个（Age、Fare），int类型的有5个（PassengerId、Survived、Pclass、SibSp、Parch），object类型的有5个（Name、Sex、Ticket、Cabin、Embarked）。测试集包含418个样本，相比于训练集，缺少了Survived特征变量（因为是需要我们预测的）。另一方面，在训练集中，Age、Cabin和Embarked三个变量中存在缺失值，而在测试集中，Age、Fare和Embarked三个变量中存在缺失值。
 
 
 ```python
@@ -89,6 +97,7 @@ print(test_df.info())
     dtypes: float64(2), int64(5), object(5)                memory usage: 36.0+ KB                 
     memory usage: 83.6+ KB                                                                        
 
+### 数据分布
 
 明确了数据集中各个特征变量的类型之后，我们可以查看各个特征变量的数据分布情况。比如对于数值型变量：
 
