@@ -70,6 +70,10 @@ search:
   path: search.xml
   field: post
 
+marked:
+  gfm: true
+  breaks: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
