@@ -5,6 +5,8 @@ tags:
   - Python
 ---
 
+{% qnimg Tensorflow\tensorflow.jpg %}
+
 入坑深度学习已有足足一年，一直在matlab上勤勤恳恳，如今tensorflow大火，作为深度学习微不足道的一员，不了解tensorflow实在说不过去。恰逢今日周六，有足够的时间用来折腾，果断用来搭建深度学习的tensorflow开发环境。受限于CPU的计算能力，首选GPU作为计算单元。
 <!-- more -->
 

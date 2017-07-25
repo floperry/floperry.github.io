@@ -6,6 +6,7 @@ tags:
   - Python
 ---
 
+{% qnimg Titanic2\kaggle.png %}
 
 在上一节[Titanic之数据分析](http://floperry.github.io/2017/06/21/Titanic%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/)中，简单的对样本数据的类型及分布进行了分析。在本节中，我们将根据上一节的分析，选择出与后续预测结果相关性较强的特征。  
 <!--more-->
@@ -222,6 +223,10 @@ train_df[['Parch', 'Survived']].groupby(['Parch'], as_index=False).mean().sort_v
     .dataframe tbody tr th {
         vertical-align: top;
     }
+
+    table th:nth-of-type(1) {
+      width: 100px;
+    }
 </style>
 <table border="1" class="dataframe">
   <thead>
@@ -283,11 +288,11 @@ train_df[['Parch', 'Survived']].groupby(['Parch'], as_index=False).mean().sort_v
 
 
 ```python
-g = sns.FacetGrid(train_df, col='Survived', size=2.0, aspect=1.5)
+g = sns.FacetGrid(train_df, col='Survived', size=3.0, aspect=1.5)
 g.map(plt.hist, 'Age', bins=20)
 ```
 
-![png](\images\Titanic2\output_17_1.png)
+{% qnimg Titanic2\output_17_1.png %}
 
 
 不难看出，船上的乘客年龄大多分布在15-40这个范围内，其中，年龄在15-30之间的乘客存活率较低，相反，5岁以下以及75岁以上的乘客存活率较高，说明年龄与存活率之间有较强的相关性。考虑保留年龄作为我们需要的一个特征，同时后面将对年龄做分段处理。  
@@ -296,11 +301,11 @@ g.map(plt.hist, 'Age', bins=20)
 
 
 ```python
-grid = sns.FacetGrid(train_df, col='Survived', row='Pclass', size=2.0, aspect=1.5)
+grid = sns.FacetGrid(train_df, col='Survived', row='Pclass', size=3.0, aspect=1.5)
 grid.map(plt.hist, 'Age', bins=20)
 ```
 
-![png](\images\Titanic2\output_20_1.png)
+{% qnimg Titanic2\output_20_1.png %}
 
 
 简单分析一下以上直方图，Pclass=3的乘客最多，而且其中的大多数人都没有存活下来。相对的，Pclass=1的乘客大多数人都存活下来。在Pclass=2的人群中，年龄较小的乘客都存活下来。整体而言，Pclass随着Age分布而变化，且与Survived有较强的相关性，考虑将其保留作为一个特征。   
@@ -314,7 +319,7 @@ grid.map(sns.pointplot, 'Pclass', 'Survived', 'Sex', palette='deep')
 grid.add_legend()
 ```
 
-![png](\images\Titanic2\output_23_1.png)
+{% qnimg Titanic2\output_23_1.png %}
 
 
 除了Embarked=C，在Embarked=S和Embarked=Q时，Sex=female的人群有明显较高的存活率。另外，随着Embarked的不同，不同Pclass的人群的存活率也不相同。因此，考虑保留Sex和Embarked这两个特征。  
@@ -326,8 +331,7 @@ grid.add_legend()
 grid = sns.FacetGrid(train_df, row='Embarked', col='Survived', size=2.0, aspect=1.5)
 grid.map(sns.barplot, 'Sex', 'Fare', ci=None)
 ```
-
-![png](\images\Titanic2\output_26_1.png)
+{% qnimg Titanic2\output_26_1.png %}
 
 
 很直观的可以看出，Fare值越高，Survived的比重越大，考虑保留Fare特征，并在后面对其进行分段化。  
