@@ -25,6 +25,18 @@ tags:
 
 {% qnimg Sort/BubbleSort.gif %}
 
+#### 算法伪码
+
+ ```
+do
+  swapped = false
+  for i = 1 to indexOfLastUnsortedElement-1
+    if leftElement > rightElement
+      swap(leftElement, rightElement)
+      swapped = true
+while swapped
+ ```
+
 #### 算法实现
 
 ```Python
@@ -51,6 +63,17 @@ def bubble_sort(array):
 
 {% qnimg Sort\SelectionSort.gif %}
 
+#### 算法伪码
+
+```
+repeat (numOfElements - 1) times
+  set the first unsorted elements
+  for each of the unsorted elements
+    if element < currentMinimum
+      set element as new minimum
+  swap minimum with first unsorted position
+```
+
 #### 算法实现
 
 ``` Python
@@ -70,7 +93,7 @@ def select_sort(array):
 #### 算法思想
 
 <blockquote>
-	1、初始化数组为已排序和未排序两部分，其中第一个元素为已排序，其余为未排序
+	1、初始化序列为已排序和未排序两部分，其中第一个元素为已排序，其余为未排序
 	<br>
 	2、比较未排序部分的第一个元素和已排序部分的元素，并将其插入到合适的位置，直到最后一个元素
 </blockquote>
@@ -79,10 +102,153 @@ def select_sort(array):
 
 {% qnimg Sort\InsertionSort.gif %}
 
+#### 算法伪码
+
+```
+mark first element as sorted
+for each unsorted element X
+  'extract' the element X
+  for j = lastSortedIndex down to 0
+    if current element j > X
+      move sorted element to the right by 1
+    break loop and insert X here
+```
+
 #### 算法实现
 
 ``` Python
 def insert_sort(array):
-
+    n = len(array)
+    for i in range(1, n):
+        if array[i] < array[i-1]:
+            tmp = array[i]
+            idx = i
+            for j in range(i-1, -1, -1):
+                if array[j] > tmp:
+                    array[j+1] = array[j]
+                    idx = j
+                else:
+                    break
+            array[idx] = tmp
     return array
+```
+
+### 归并排序 MergeSort
+
+#### 算法思想
+
+<blockquote>
+	1、归：递归的分解序列，直到每个序列只有一个元素
+	<br>
+	2、并：合并相邻的两个有序序列
+</blockquote>
+
+#### 算法可视化
+
+{% qnimg Sort\MergeSort.gif %}
+
+#### 算法伪码
+
+```
+split each element into partitions of size 1
+recursively merge adjancent partitions
+  for i = leftPartStartIndex to rightPartLastIndex inclusive
+    if leftPartHeadValue <= rightPartHeadValue
+      copy leftPartHeadValue
+    else: copy rightPartHeadValue
+copy elements back to original array
+```
+
+#### 算法实现
+
+``` Python
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
+
+    def merge(left, right):
+        l, r = 0, 0
+        result = []
+        while l < len(left) and r < len(right):
+            if left[l] < right[r]:
+                result.append(left[l])
+                l += 1
+            else:
+                result.append(right[r])
+                r += 1
+        result += left[l:]
+        result += right[r:]
+        return result
+
+    num = int(len(array)/2)
+    left = merge_sort(array[:num])
+    right = merge_sort(array[num:])
+    return merge(left, right)
+```
+
+### 快速排序 QuickSort
+
+#### 算法思想
+
+<blockquote>
+	1、从序列中选出一个基准元素，重排序列，将所有比基准小的元素放在基准前面，比基准大的元素放在基准后面
+	<br>
+	2、递归地把两个子序列进行重新排序
+</blockquote>
+
+#### 算法可视化
+
+{% qnimg Sort\QuickSort.gif %}
+
+#### 算法伪码
+
+```
+for each unsorted partition
+set first element as pivot
+  storeIndex = pivotIndex + 1
+  for i = pivotIndex + 1 to rightmostIndex
+    if element[i] < element[pivot]
+      swap(i, storeIndex); storeIndex++
+  swap(pivot, storeIndex - 1)
+```
+
+#### 算法实现
+
+``` Python
+def quick_sort(array):
+    
+    def qsort(array, left, right):
+        if left >= right:
+            return array
+        pivot = array[left]
+        lp, rp = left, right
+        while lp < rp:
+            while array[rp] >= pivot and lp < rp:
+                rp -= 1
+            while array[lp] <= pivot and lp < rp:
+                lp += 1
+            array[lp], array[rp] = array[rp], array[lp]
+        array[left], array[lp], array[lp], array[left]
+        qsort(array, left, lp-1)
+        qsort(array, rp+1, right)
+        return array
+
+    return qsort(array, 0, len(array)-1)
+```
+
+wiki版：
+
+``` Python
+def quicksort(array):
+    if len(array) <= 1:
+        return array
+    l = [x for x in array[1:] if x <= array[0]]
+    r = [x for x in array[1:] if x > array[0]]
+    return quicksort(l) + [array[0]] + quicksort(r)
+```
+
+终极版：
+
+``` Python 
+qs = lambda xs : ((len(xs) <= 1 and [xs]) or [qs([x for x in xs[1:] if x < xs[0]]) + [xs[0]] + qs([x for x in xs[1:]])])[0]
 ```
