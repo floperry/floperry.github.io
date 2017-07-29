@@ -252,3 +252,76 @@ def quicksort(array):
 ``` Python 
 qs = lambda xs : ((len(xs) <= 1 and [xs]) or [qs([x for x in xs[1:] if x < xs[0]]) + [xs[0]] + qs([x for x in xs[1:]])])[0]
 ```
+
+### 堆排序 HeapSort
+
+#### 算法思想
+
+<blockquote>
+	1、最大堆调整（Max-Heapify）：调整堆的末端子节点，使子节点永远小于父节点
+	<br>
+	2、创建最大堆（Build-Max-Heap）：重排堆的所有元素，使其成为最大堆
+	<br>
+	3、堆排序（Heap-Sort）：移除在第一个元素的根节点，并作最大堆调整的递归运算
+</blockquote>
+
+#### 算法可视化
+
+{% qnimg Sort\HeapSort.gif %}
+
+#### 算法伪码
+
+```
+HEAPSORT(A)
+	BUILD-MAX-HEAP(A)
+	for i = length(A) downto 2 
+	  do exchange A[1] with A[i]
+	    heapSize(A) = heapSize(A) - 1
+	    MAX-HEAPIFY(A, 1)
+
+BUILD-MAX-HEAP(A)
+	heapSize(A) = length(A)
+	for i = length(A)/2 downto 1
+	  do MAX-HEAPIFY(A, i)
+
+MAX-HEAPIFY(A, i)
+	l = LEFT(i)
+	r = RIGHT(i)
+	if l <= heapSize(A) and A[l] > A[i]
+	  then largest = l
+	else largest = i
+	if r <= heapSize(A) and A[r] > A[largest]
+	  then largest = r
+	if largest != i
+	  then exchange A[i] with A[largest]
+	  MAX-HEAPIFY(A, largest)
+```
+
+#### 算法实现
+
+``` Python
+def heap_sort(array):
+
+    def max_heapify(start, end):
+        root = start
+        while True:
+            child = 2 * root + 1
+            if child > end:
+                break
+            if child + 1 <= end and array[child] < array[child+1]:
+                child += 1
+            if array[root] < array[child]:
+                array[root], array[child] = array[child], array[root]
+                root = child
+            else:
+                break
+
+    for start in range((len(array)-2) // 2, -, -1):
+        max_heapify(start, len(array)-1)
+
+    for end in range(len(array)-1, 0, -1):
+        array[0], array[end] = array[end], array[0]
+        max_heapify(0, end-1)
+
+    return array  
+```
