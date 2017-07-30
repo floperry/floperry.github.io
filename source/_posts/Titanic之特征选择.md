@@ -6,7 +6,7 @@ tags:
   - Python
 ---
 
-{% qnimg Titanic2\kaggle.png %}
+<img src="http://otnawj8bh.bkt.clouddn.com/images/Titanic2\kaggle.png" />
 
 在上一节[Titanic之数据分析](http://floperry.github.io/2017/06/21/Titanic%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/)中，简单的对样本数据的类型及分布进行了分析。在本节中，我们将根据上一节的分析，选择出与后续预测结果相关性较强的特征。  
 <!--more-->

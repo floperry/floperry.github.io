@@ -5,7 +5,7 @@ tags: [机器学习, Python]
 ---
 
 {% qnimg Titanic1/kaggle.png %}
-
+<br>
 本文来源于数据挖掘竞赛Kaggle上的经典入门项目[Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic)。个人感觉对机器学习非常有帮助，谨以此文献给自己以及众多的Machine learning Beginners。
 <!-- more -->
 
