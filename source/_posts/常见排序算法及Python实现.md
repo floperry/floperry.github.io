@@ -1,10 +1,10 @@
 ---
 title: 常见排序算法及Python实现
-date: 2017-07-27 13:14:58
-tags:
+date: 2017-07-30 13:14:58
+tags: [Python, 算法]
 ---
 
-<img src="http://otnawj8bh.bkt.clouddn.com/images/Sort/sort.png?imageView2/1/w/800/h/310" />
+<img src="http://otnawj8bh.bkt.clouddn.com/images/Sort/title.jpg?imageView2/1/w/800/h/350" />
 
 今天介绍一下常用的排序算法，及其用Python的简单实现。
 <!--more-->
@@ -325,3 +325,55 @@ def heap_sort(array):
 
     return array  
 ```
+
+### 希尔排序 ShellSort
+
+#### 算法思想
+
+<blockquote>
+	1、确定将要使用的步长序列
+	<br>
+	2、对每个步长所产生的序列进行插入排序
+</blockquote>
+
+#### 算法伪码
+
+```
+gap = round(n/2)
+while gap > 0 do:
+  for i = gap to n-1 do:
+    temp = a[i]
+    j = i
+    while j >= gap and a[j-gap] > temp do:
+      a[j] = a[j-gap]
+      j = j - gap
+    a[j] = temp
+  gap = round(gap/2)
+```
+
+#### 算法实现
+
+``` Python
+def shell_sort(array):
+    n = len(array)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = array[i]
+            j = i
+            while j >= gap and array[j-gap] > temp:
+                array[j] = array[j-gap]
+                j -= gap
+            array[j] = temp
+        gap = gap // 2
+    return array
+```
+
+---
+
+### 总结
+
+最后，对各种算法的复杂度进行一下简单的整理：
+
+{% qnimg Sort\sort.png extend:?imageView2/1/w/800/h/320 %}
+
