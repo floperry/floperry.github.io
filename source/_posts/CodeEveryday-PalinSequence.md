@@ -1,5 +1,5 @@
 ---
-title: 一天一道算法题-PalinSequence
+title: 一天一道算法题-回文序列
 date: 2017-08-09 11:52:07
 tags: [Python, 算法]
 ---
