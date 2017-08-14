@@ -67,7 +67,7 @@ sum(i) = sum(i/2) + 1 + 3 + ... + (i-1) (i为偶数)
 def sum_max_odd_divisor(num):
     if num == 1:
         return num
-    if (num % 2) = 0:
+    if (num % 2) == 0:
         return sum_max_odd_divisor(num // 2) + num * num //4
     else:
         return sum_max_odd_divisor(num - 1) + num
