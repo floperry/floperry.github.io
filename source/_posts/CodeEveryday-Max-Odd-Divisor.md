@@ -56,4 +56,27 @@ if __name__ == '__main__':
     main()
 ```
 
-提交后发现代码运行超时，分析一下，算法的时间复杂度为O(n)，但是输入数据的大小达到了10^10，显然不能满足要求，需要进一步对算法进行优化。
+提交后发现代码运行超时，分析一下，算法的时间复杂度为O(n)，但是输入数据的大小达到了10^10，显然不能满足要求，需要进一步对算法进行优化。  
+设sum(i) = f(1) + f(2) + ... + f(i)，对于f(i)，因为要求的是最大奇约数，i为奇数时就是其本身，i为偶数时，有f(i) = f(i/2)，所以  
+sum(i) = sum(i/2) + 1 + 3 + ... + (i-1) (i为偶数)  
+       = sum(i-1) + i (i为奇数)  
+时间复杂度为O(logn)。  
+具体代码如下：
+
+``` Python
+def sum_max_odd_divisor(num):
+    if num == 1:
+        return num
+    if (num % 2) = 0:
+        return sum_max_odd_divisor(num // 2) + num * num //4
+    else:
+        return sum_max_odd_divisor(num - 1) + num
+
+def main():
+    n = int(input())
+    result = sum_max_odd_divisor(n)
+    print(result)
+
+if __name__ == '__main__':
+    main()
+```
