@@ -36,3 +36,25 @@ tags: [Python, 算法]
 
 ### 解题思路
 
+先对数列进行排序，然后依次比较前后两个元素的差值是否相等即可。具体代码如下：
+
+``` Python
+def arith_pro(n, list):
+    list.sort()
+    d = list[1] - list[0]
+    for i in range(2, n):
+        if list[i] - list[i-1] != d:
+            return 'Impossible'
+        else:
+            continue
+    return 'Possible'
+
+def main():
+    n = int(input().strip())
+    list = [int(x) for x in input().strip().split()]
+    result = arith_pro(n, list)
+    print(result)
+
+if __name__ == '__main__':
+    main()
+```
