@@ -56,4 +56,4 @@ def Find(list, number):
     return find
 ```
 
-详细代码及测试请移步[Github](https://github.com/floperry/CodeEveryday/tree/master/offer/03-Find-In-Matrix)。
+完整代码及测试请移步[Github](https://github.com/floperry/CodeEveryday/tree/master/offer/03-Find-In-Matrix)。关于本题更具体的讲解，可参考[链接-二维数组中的查找](https://github.com/gatieme/CodingInterviews/tree/master/003-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE)。
