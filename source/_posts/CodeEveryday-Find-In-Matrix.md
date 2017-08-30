@@ -55,3 +55,5 @@ def Find(list, number):
                 row += 1
     return find
 ```
+
+详细代码及测试请移步[Github](https://github.com/floperry/CodeEveryday/tree/master/offer/03-Find-In-Matrix)。
