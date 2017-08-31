@@ -63,3 +63,40 @@ vector<int> PrintListReversingly_Recursively(ListNode* head) {
     return result;
 }
 ```
+
+Python用类来实现链表的数据结构。以下代码用于实现一个Node类：
+
+``` Python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+```
+
+我们可以考虑两种方式来完成链表从尾到头的打印，具体代码实现如下：
+
+1、新建list作为栈结构
+
+``` Python
+def PrintListReversingly(listNode):
+    newList = []
+
+    while (listNode is not None):
+        newList.append(listNode.data)
+        listNode = listNode.next
+
+    return newList[::-1]
+```
+
+2、使用list的insert()函数
+
+``` Python
+def PrintListReversingly(listNode):
+    newList = []
+
+    while (listNode is not None):
+        newList.insert(0, listNode.data)
+        listNode = listNode.next
+
+    return newList
+```
