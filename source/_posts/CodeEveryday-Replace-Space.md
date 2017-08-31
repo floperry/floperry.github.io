@@ -29,7 +29,7 @@ void ReplaceSpace(char string[], int length) {
     while (string[i] != '\0') {
     	++ oldLength;
     	if (string[i] == ' ') {
-    		++ numberOfSpace;
+            ++ numberOfSpace;
     	}
     	++ i;
     }
@@ -40,12 +40,12 @@ void ReplaceSpace(char string[], int length) {
 
     while (indexOfOld >= 0 && indexOfNew > indexOfOld) {
     	if (string[indexOfOld] == ' ') {
-    		string[indexOfNew--] = '0';
-    		string[indexOfNew--] = '2';
-    		string[indexOfNew--] = '%';
+            string[indexOfNew--] = '0';
+            string[indexOfNew--] = '2';
+            string[indexOfNew--] = '%';
     	}
     	else {
-    		string[indexOfNew--] = string[indexOfOld];
+            string[indexOfNew--] = string[indexOfOld];
     	}
     	-- indexOfOld;
     }
@@ -61,6 +61,7 @@ def ReplaceSpace(string):
     oldLength, newLength = len(list), len(list) + numberOfSpace * 2
     [s.append('') for i in range(numberOfSpace * 2)]
     indexOfOld, indexOfNew = oldLength - 1, newLength -1
+
     while (indexOfOld >= 0 and indexOfNew > indexOfOld):
         if (list[indexOfOld] == ' '):
             list[indexOfNew-2], list[indexOfNew-1], list[indexOfNew] = '%20'
@@ -69,9 +70,14 @@ def ReplaceSpace(string):
             list[indexOfNew] = list[indexOfOld]
             indexOfNew -= 1
         indexOfOld -= 1
+
     print(''.join(list))
 ```
 
 完整代码及测试请移步[Github](https://github.com/floperry/CodeEveryday/tree/master/offer/04-Replace-Space)。关于本题更具体的讲解，可参考[链接-替换空格](https://github.com/gatieme/CodingInterviews/tree/master/004-%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC)。
+
+### Tips
+
+合并两个数组（包括字符串）时，如果从前往后复制每个数字（或字符）需要重复移动数字（或字符）多次，那么我们可以考虑从后往前复制，这样就能减少移动的次数，从而提高效率。
 
 
