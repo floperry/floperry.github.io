@@ -25,16 +25,16 @@ img_normal = plt.imread("opencv-logo.png", 1)
 plt.figure()
 plt.subplot(1, 2, 1)
 plt.imshow(img_cv)
-plt.title("OpenCV")
+plt.title("cv2")
 plt.subplot(1, 2, 2)
 plt.imshow(img_normal)
-plt.title("Normal")
+plt.title("matplotlib")
 plt.show()
 ```
 
 显示结果如下图所示：
 
-<img src="channel.png"  />
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/channel.png"  />
 
 左图是通过cv2载入的图像，右图是通过matplotlib载入的图像，可以看到，两张图中红色和蓝色的位置刚好发生了对调。
 
@@ -98,6 +98,7 @@ uint8
 ```
 
 ## 设置ROI
+
 ROI是Region of Interest的简称，指图像中我们感兴趣或者关注的区域。ROI在图像处理的很多场景如图像分割、目标检测等中都有广泛应用。通过如下操作，我们可以将图片中的”OpenCV“字样取出来。不难看出，设置ROI的操作就是Python中的切片操作。
 
 ```Python
@@ -108,7 +109,7 @@ img = cv2.imread("opencv-logo.png", 1)
 roi = img[570:, :, :]
 ```
 
-<img src="roi.png"  />
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/roi.png"  />
 
 ## 分割与合并图像通道
 
@@ -125,7 +126,7 @@ b, g, r = cv2.split(img)
 img = cv2.merge((b, g, r))
 ```
 
-<img src="split_merge.png"  />
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/split_merge.png" />
 
 ### 参考资料
 
