@@ -2,6 +2,7 @@
 title: OpenCV系列(三)：图像算术运算
 date: 2018-10-14
 tags: [OpenCV, Python]
+mathjax: true
 ---
 
 # 主要内容
@@ -54,7 +55,7 @@ cv2.destroyAllWindows()
 
 除了上面介绍的两种图像相加操作，还有一种称为带权相加，这种相加方式常常在图像融合技术中应用。带权相加按以下公式进行: 
 
-$dst=saturate(sr_1*\alpha+src_2*\beta + \gamma)$  
+$$dst=saturate(src_{1}\cdot\alpha+src_{2}\cdot\beta+\gamma)$$
 
 在OpenCV中，函数`cv2.addWeighted()`实现图像的带权相加。该函数的语法格式为：`cv2.addWeighted(src1, alpha, src2, beta, gamma)`，其中，src1和src2需要保持相同的shape，alpha、beta以及gamma分别为src1和src2的权重以及偏移量。通过一段程序来具体了解一下该函数的使用。
 
@@ -74,9 +75,11 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img1.png" width = "300" height = "300" class="img-3">
-<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img2.png" width = "300" height = "300" class="img-3">
-<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_dst.png" width = "300" height = "300" class="img-3">
+图像混合后的效果如下所示：
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img1.png" width = "700" height = "300" >
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img2.png" width = "700" height = "300" >
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_dst.png" width = "700" height = "300" >
+
 
 
 

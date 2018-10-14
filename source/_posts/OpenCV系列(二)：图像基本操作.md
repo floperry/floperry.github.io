@@ -8,7 +8,7 @@ tags: [OpenCV, Python]
 
 - 学习如何获取和修改像素值
 - 学习如何获取图像属性
-- 学习设置ROI(Region of Image)
+- 学习设获取图像区域
 - 学习分割与合并图像
 
 <!-- more -->
@@ -99,7 +99,7 @@ uint8
 
 ## 设置ROI
 
-ROI是Region of Interest的简称，指图像中我们感兴趣或者关注的区域。ROI在图像处理的很多场景如图像分割、目标检测等中都有广泛应用。通过如下操作，我们可以将图片中的”OpenCV“字样取出来。不难看出，设置ROI的操作就是Python中的切片操作。
+获取图像区域是图像处理中的基本操作，常常用来得到ROI。ROI是Region of Interest的简称，指图像中我们感兴趣或者关注的区域。ROI在图像处理的很多场景如图像分割、目标检测等中都有广泛应用。通过如下操作，我们可以将图片中的”OpenCV“字样取出来。不难看出，设置ROI的操作就是Python中的切片操作。
 
 ```Python
 import numpy as np 
