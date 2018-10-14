@@ -67,8 +67,8 @@ elif k == ord('s'):    # wait for 's' key to save and exit
 
 原图和保存的图片分别如下所示：  
 
-<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/opencv-logo.png" width = "400" height = "300" class="img-3"/>
-<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/opencv-graylogo.png" width = "400" height = "300" class="img-3"/>
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/opencv-logo.png" width = "400" height = "300" class="img-2"/>
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/opencv-graylogo.png" width = "400" height = "300" class="img-2"/>
 
 程序示例中涉及到两个新的函数：
 

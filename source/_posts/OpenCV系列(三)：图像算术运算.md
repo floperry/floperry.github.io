@@ -33,7 +33,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-<img src="image_add.png" >
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/image_add.png" >
 
 可以看到，`np.add()`和`cv2.add()`的结果完全不同。这主要是由于图像中像素的数据类型导致的。前面我们说过，图像中像素的数据类型为uint8。在OpenCV的官方文档中提到，Numpy中的相加是modulo operation(模除运算)，而OpenCV中的相加是saturated operation(饱和运算)。这是什么意思呢？我们来看下面这个例子。
 
@@ -74,7 +74,9 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-<img src="image_blending.png">
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img1.png" width = "300" height = "300" class="img-3">
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img2.png" width = "300" height = "300" class="img-3">
+<img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_dst.png" width = "300" height = "300" class="img-3">
 
 
 
