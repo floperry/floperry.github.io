@@ -1,5 +1,5 @@
 ---
-title: OpenCV系列(三)：图像算术运算
+title: OpenCV系列(三)：图像相加
 date: 2018-10-14
 tags: [OpenCV, Python]
 mathjax: true
@@ -75,11 +75,14 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-图像混合后的效果如下所示：
+图像融合后的效果如下所示：
+
 <img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img1.png" width = "700" height = "300" >
 <img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_img2.png" width = "700" height = "300" >
 <img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/images/blending_dst.png" width = "700" height = "300" >
 
 
+### 参考资料
 
+[OpenCV-Python Tutorials: Arithmetic Operations on Images](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html#image-arithmetics)
 
