@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    Hello World | Hexo
+    Ubuntu 18.04 下解决 shadowsocks 服务报错问题 | Hexo
   </title>
   <meta name="description" content>
   
   <meta name="keywords" content="
-  
+  Ubuntu,shadowsocks
   ">
   
   <meta name="author" content="John Doe">
@@ -83,15 +83,15 @@
     <ul class="header-toolbar">
       <li class="clearfix">
         <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives" class="header-toolbar-right"> 1 </a>
+        <a href="/archives" class="header-toolbar-right"> 2 </a>
       </li>
       <li>
         <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
-        <a href="/tags" class="header-toolbar-right"> 0 </a>
+        <a href="/tags" class="header-toolbar-right"> 3 </a>
       </li>
       <li>
         <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories" class="header-toolbar-right"> 0 </a>
+        <a href="/categories" class="header-toolbar-right"> 2 </a>
       </li>
     </ul>
     <h2 class="header-title">
@@ -119,23 +119,29 @@
     <i class="fa fa-user-o"></i>
     John Doe
 
-    <span class="post-date float-right" title="{{moment(1551365052485).format('MMM DD, YYYY, h:mm:ss A')}}">
+    <span class="post-date float-right" title="{{moment(1550937600000).format('MMM DD, YYYY, h:mm:ss A')}}">
       <i class="fa fa-pencil-square-o"></i>
-      {{moment(1551365052485).fromNow()}}
+      {{moment(1550937600000).fromNow()}}
     </span>
   </h3>
 
   <article class="post-content">
-    <h1>Hello World</h1>
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <h1>Ubuntu 18.04 下解决 shadowsocks 服务报错问题</h1>
+    <p>本文适用于 Ubuntu 18.04下由于升级 openssl 至1.1.0以上版本导致的 shadowsocks 服务出现 undefined symbol: EVP_CIPHER_CTX_cleanup 错误而无法启动的问题。该问题的具体描述如下：</p>
+<a id="more"></a>
+<blockquote>
+<p>Traceback (most recent call last):<br>  File “/home/feng/.local/bin/sslocal”, line 11, in <module><br>    sys.exit(main())<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/local.py”, line 39, in main<br>    config = shell.get_config(True)<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/shell.py”, line 262, in get_config<br>    check_config(config, is_local)<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/shell.py”, line 124, in check_config<br>    encrypt.try_cipher(config[‘password’], config[‘method’])<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/encrypt.py”, line 44, in try_cipher<br>    Encryptor(key, method)<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/encrypt.py”, line 83, in <strong>init</strong><br>    random_string(self._method_info[1]))<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/encrypt.py”, line 109, in get_cipher<br>    return m<a href="method, key, iv, op">2</a><br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/crypto/openssl.py”, line 76, in <strong>init</strong><br>    load_openssl()<br>  File “/home/feng/.local/lib/python3.6/site-packages/shadowsocks/crypto/openssl.py”, line 52, in load_openssl<br>    libcrypto.EVP_CIPHER_CTX_cleanup.argtypes = (c_void_p,)<br>  File “/usr/lib/python3.6/ctypes/<strong>init</strong>.py”, line 361, in <strong>getattr</strong><br>    func = self.<strong>getitem</strong>(name)<br>  File “/usr/lib/python3.6/ctypes/<strong>init</strong>.py”, line 366, in <strong>getitem</strong><br>    func = self._FuncPtr((name_or_ordinal, self))<br>AttributeError: /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1: undefined symbol: EVP_CIPHER_CTX_cleanup  </module></p>
+</blockquote>
+<p>如<a href="https://www.openssl.org/docs/man1.1.0/crypto/EVP_CIPHER_CTX_reset.html" target="_blank" rel="noopener">官网</a>中所描述，这是由于在openssl 1.1.0中废弃了 <code>EVP_CIPHER_CTX_cleanup()</code> 函数而引入了 <code>EVE_CIPHER_CTX_reset()</code> 函数所导致的：</p>
+<blockquote>
+<p><strong>EVP_CIPHER_CTX</strong> was made opaque in OpenSSL 1.1.0. As a result, EVP_CIPHER_CTX_reset() appeared and EVP_CIPHER_CTX_cleanup() disappeared. EVP_CIPHER_CTX_init() remains as an alias for EVP_CIPHER_CTX_reset().</p>
+</blockquote>
+<p>因此，可以通过将 <code>EVP_CIPHER_CTX_cleanup()</code> 函数替换为 <code>EVP_CIPHER_CTX_reset()</code> 函数来解决该问题。具体解决方法如下：</p>
+<p>1、根据错误信息定位到文件 /home/feng/.local/lib/python3.6/site-packages/shadowsocks/crypto/openssl.py 。</p>
+<p>2、搜索 cleanup 并将其替换为 reset 。</p>
+<p>3、重新启动 shadowsocks, 该问题解决。</p>
+<hr>
+<p>附：<a href="https://www.sundabao.com/ubuntu%E4%BD%BF%E7%94%A8shadowsocks/" target="_blank" rel="noopener">Ubuntu 18.04下配置和使用shadowsocks的方法</a>。</p>
 
   </article>
 </div>
