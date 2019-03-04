@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    通过Github远程仓库备份博客 | 困困的莫尔顿
+    如何解决过拟合 | 困困的莫尔顿
   </title>
   <meta name="description" content="争取早日摆脱不会写代码的魔咒&lt;_&gt;">
   
   <meta name="keywords" content="
-  噼里啪啦
+  机器学习
   ">
   
   <meta name="author" content="Fenng">
@@ -119,32 +119,23 @@
     <i class="fa fa-user-o"></i>
     Fenng
 
-    <span class="post-date float-right" title="{{moment(1550332800000).format('MMM DD, YYYY, h:mm:ss A')}}">
+    <span class="post-date float-right" title="{{moment(1551710468000).format('MMM DD, YYYY, h:mm:ss A')}}">
       <i class="fa fa-pencil-square-o"></i>
-      {{moment(1550332800000).fromNow()}}
+      {{moment(1551710468000).fromNow()}}
     </span>
   </h3>
 
   <article class="post-content">
-    <h1>通过Github远程仓库备份博客</h1>
-    <p><br><br>由于近期电脑gg，原来的博客文章没来得及备份，所以，原来的文章全丢了……为避免类似的悲剧再发生，找到一种利用github来存放博客文件的方法，不同于传统的新开Repo，我们直接通过一个分支来存放Hexo的原始文件。OK，言归正传，我们今天的主题就是<strong>如何通过在原Repo下新建Branch来备份hexo博客文件</strong>。<br><a id="more"></a></p>
-<hr>
-<h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>1、创建仓库 xxx.github.io；<br>2、创建两个分支：master与hexo，并设置hexo为默认分支；<br>3、拷贝仓库到本地；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:xxx/xxx.github.io.git</span><br></pre></td></tr></table></figure>
-<p>4、在本地xxx.github.io文件夹下进行hexo的安装与部署；<br>5、修改_config.yml中的deploy分支为master；<br>6、上传博客文件至github；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"..."</span></span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure>
-<p>7、生成网站并部署到github。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
-<hr>
-<p>当然，如果事先已经部署好hexo，需要事后再将hexo部署到github，又应该怎么做呢？</p>
-<h2 id="具体方法-1"><a href="#具体方法-1" class="headerlink" title="具体方法"></a>具体方法</h2><p>1、 在原有仓库创建两个分支：master与hexo,并设置hexo为默认分支；<br>2.、拷贝远程仓库到本地；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git@github.com:xxx/xxx.github.io.git</span><br></pre></td></tr></table></figure>
-<p>3、删除该目录下的所有文件；<br>4、提交修改；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"..."</span> </span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure>
-<p>5、将hexo博客相关文件拷贝到xxx.github.io文件夹；<br>6、上传博客文件；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"..."</span> </span><br><span class="line">$ git push origin hexo</span><br></pre></td></tr></table></figure>
-<hr>
-<p>以上就是通过Github备份博客文件的方法。值得提醒的是，每次部署完博客，记得将源文件push到远程仓库。</p>
+    <h1>如何解决过拟合</h1>
+    <p>你是如何解决模型训练过程中出现的过拟合问题的？最近似乎已经被问到很多次了。明明知道的问题，但是好像每次回答的都不够完整。痛定思痛，在这里整理一下，希望下次被问到能够脱口而出。  </p>
+<a id="more"></a>
+<p>首先明确一下什么是过拟合？过拟合(overfitting)是指模型在训练的过程中，随着复杂度的增加，训练集上的误差越来越小，而验证集上的误差却越来越大的现象。具体可以参考下面的这张图片。如果把图中的欠拟合和过拟合和人作类比的话，那么过拟合就是典型的说话不过脑子，而过拟合就是想太多。<br><img src="https://raw.githubusercontent.com/floperry/floperry.github.io/hexo/source/_posts/figure/2019-03-04-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%87%E6%8B%9F%E5%90%88.png" alt="欠拟合与过拟合"></p>
+<p>我们知道，过拟合一般是由于模型复杂度过高或者说模型容量过大导致的。那么，我们就可以通过约束模型的复杂度或者限制模型的容量的手段来解决过拟合问题。常见的方法有以下几种：  </p>
+<p>1、<strong>数据增强(data augment)</strong><br>这应该是最常见的也是最容易想到的方法。既然是过拟合是由于模型容量过大导致的，那么我们自然可以通过扩充数据集来避免过拟合问题。</p>
+<p>2、<strong>L1、L2正则化(Regularization)</strong><br>L1正则化主要是通过在目标函数中增加所有权重系数的绝对值（即1范数）之和来逼迫更多的权重系数为零。事实上，这也是通过L1正则化来进行特征的自动选择的原理。L2正则化则是通过在目标函数中增加所有权重系数的平方之和（即2范数）来逼迫所有的所有的权重系数趋于零。  </p>
+<p>3、<strong>随机失活(dropout)</strong><br>每次训练的时候让神经元以一定的概率被激活，这在一定的程度上简化了模型。由于每次被激活的神经元不一定相同，这就意味着实际上我们每次都是在采样部分样本来训练一个新的模型。这种思路和Bagging有些类似。  </p>
+<p>4、<strong>逐层归一化(batch normalization)</strong><br>这种方法给每层的输出都进行一次归一化，使得下一层的输入接近高斯分布，这样可以避免训练下一层时由于输入的偏态分布导致训练出现以偏概全的现象。  </p>
+<p>5、<strong>提前终止(early stopping)</strong><br>常用的一种方法，即在模型训练的过程中出现验证误差不再减小或者不降反升时停止训练模型，这样可以有效避免模型在训练过程中过度拟合已知的训练集数据而导致的泛化能力差的问题。</p>
 
   </article>
 </div>
