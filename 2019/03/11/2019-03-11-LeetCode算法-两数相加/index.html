@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    LeetCode算法-两数相加 | 困困的莫尔顿
+  </title>
+  <meta name="description" content="争取早日摆脱不会写代码的魔咒&lt;_&gt;">
+  
+  <meta name="keywords" content="
+  LeetCode,算法,C++
+  ">
+  
+  <meta name="author" content="Fenng">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 6 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 8 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 5 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">困困的莫尔顿</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    Fenng
+
+    <span class="post-date float-right" title="{{moment(1552314292000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1552314292000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>LeetCode算法-两数相加</h1>
+    <p>不知不觉又是一个星期过去了，本周没有刷算法题，也没有更新博客，实在是有几分愧疚。今天来看一下LeetCode算法的第二题：两数相加。</p>
+<a id="more"></a>
+<p>题目描述：给出两个<strong>非空</strong>的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储<strong>一位</strong>数字。<br>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。<br>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。<br>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">输出：7 -&gt; 0 -&gt; 8</span><br><span class="line">原因：342 + 465 = 807</span><br></pre></td></tr></table></figure>
+<p>拿到题目的第一反应，就是我该去补一补链表的相关知识了[&gt;_&lt;]。然后，这道题的思路应该比较明确，就是通过链表来模拟加法运算。回想一下我们进行加法操作时的过程，首先是从最低位开始，对应位置的值相加，然后是下一位相加，当前一位相加后有进位时，下一位的相加结果同时要加上上一位的进位…以此循环直到最高位。伪代码大致如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1 定义一个单节点phead，并将其值初始化为0，并将当前节点 ``curr`` 指向该节点；  </span><br><span class="line">2 将节点 ``p`` 和 ``q`` 分别指向列表 ``l1`` 和 ``l2`` 的头节点；  </span><br><span class="line">3 将进位 ``carry`` 初始化为0；  </span><br><span class="line">4 遍历 ``l1`` 和 ``l2`` 直至其尾端：  </span><br><span class="line">  4.1 将 ``x`` 的值设为节点 ``p`` 的值，若节点 ``p`` 已经到达列表 ``l1`` 的尾端，则取 ``x`` 的值为0；  </span><br><span class="line">  4.2 将 ``y`` 的值设为节点 ``q`` 的值，若节点 ``q`` 已经到达列表 ``l2`` 的尾端，则取 ``y`` 的值为0；  </span><br><span class="line">  4.3 求和 ``sum = x + y + carry`` ；  </span><br><span class="line">  4.4 更新进位 ``carry = sum / 10`` ；  </span><br><span class="line">  4.5 创建值为 ``sum % 10`` 的新节点，将其设置为当前节点的下一节点，同时将当前节点前移;  </span><br><span class="line">  4.6 将节点 ``p`` 和 ``q`` 前移到下一节点；  </span><br><span class="line">5 检查 ``carry`` 是否还有进位，若还有进位，则再增加一个值为1的节点；  </span><br><span class="line">6 返回head节点的下一个节点。</span><br></pre></td></tr></table></figure>
+<p>代码实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Definition for singly-linked list.</span></span><br><span class="line"><span class="comment">* struct ListNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    ListNode *next;</span></span><br><span class="line"><span class="comment">    ListNode(int x): val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *p = l1, *q = l2, *curr = head;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p != <span class="literal">NULL</span> || q != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = (p != <span class="literal">NULL</span>) ? p-&gt;val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = (q != <span class="literal">NULL</span>) ? q-&gt;val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = x + y + carry;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            curr-&gt;next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (p != <span class="literal">NULL</span>) p = p-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (q != <span class="literal">NULL</span>) q = q-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            curr-&gt;next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度分析：<br>时间复杂度：O(max(m, n))。<br>空间复杂度：O(max(m, n))。 </p>
+<p>总结：<br>好好学习链表的相关知识。  </p>
+<p>附：<a href="https://github.com/floperry/LeetCode_CPP/blob/master/Solutions/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/addTwoNumbers.cpp" target="_blank" rel="noopener">完整代码</a></p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://floperry.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 Fenng</li>
+      <li><a href="https://floperry.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/floperry">Github</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
